@@ -17,8 +17,16 @@ api = API()
 
 ## References
 ```python
-txid = api.txid()
-vejstykke = api.get('vejstykke', id='B7FJV9KIn58')
+# Get current txid
+txid = api.txid() # 3340338
+
+# Get initial replication
+vejstykke = api.get('vejstykke')
+
+# Get latest changes 
+txid = api.txid() # 3340339
+vejstykke = api.get('vejstykke', txid='3340338')
+
 ```
 
 
