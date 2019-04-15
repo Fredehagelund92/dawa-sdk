@@ -10,7 +10,7 @@ except IOError:
 
 setup(
     name='dawa-python',
-    version='1.0.13',
+    version='0.5.0',
     description='Python Dawa API',
     long_description=long_description,
     url='https://github.com/Fredehagelund92/dawa-python',
