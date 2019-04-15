@@ -26,6 +26,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules'
     ],
     keywords="dawa data api python",
-    packages=[],
+    packages=['dawa'],
     install_requires=['requests']
 )
