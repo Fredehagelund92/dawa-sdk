@@ -6,7 +6,7 @@
 
 ## Installation
 ``` 
-sudo pip install youtube-python
+sudo pip install dawa-python
 ```
 
 ## Using
