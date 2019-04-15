@@ -15,7 +15,7 @@ from dawa import API
 api = API()
 ```
 
-## References https://developers.google.com/youtube/v3/docs/videos
+## References
 ```python
 txid = api.txid()
 vejstykke = api.get('vejstykke', id='B7FJV9KIn58')
