@@ -5,8 +5,8 @@
 **dawa-python** is a simple client for dawa api. It uses [Dawa Web API](https://dawa.aws.dk/dok/api).
 
 ## Installation
-``` 
-sudo pip install dawa-python
+```
+pip install dawa-python
 ```
 
 ## Using
@@ -18,13 +18,13 @@ api = API()
 ## References
 ```python
 # Get current txid
-txid = api.txid() # 3340338
+txid = api.txid()
 
 # Get initial replication
 vejstykke = api.get('vejstykke')
 
-# Get latest changes 
-txid = api.txid() # 3340339
+# Get latest changes
+txid = api.txid()
 vejstykke = api.get('vejstykke', txid='3340338')
 
 ```
