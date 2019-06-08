@@ -6,7 +6,7 @@
 
 ## Installation
 ```
-pip install dawa-python
+pip install dawa
 ```
 
 ## Using
