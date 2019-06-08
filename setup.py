@@ -9,7 +9,7 @@ except IOError:
     long_description = ""
 
 setup(
-    name='dawa-python',
+    name='dawa',
     version='0.1.0',
     description='Python Dawa API',
     long_description=long_description,
