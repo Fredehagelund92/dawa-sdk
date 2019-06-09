@@ -1,6 +1,5 @@
 import requests
 import json
-from urllib.parse import urlencode
 
 from .exceptions import DawaException, EndpointException
 from .enums import DawaEnum
