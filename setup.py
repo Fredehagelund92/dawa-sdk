@@ -26,6 +26,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules'
     ],
     keywords=['dawa', 'api', 'python'],
-    packages=['dawa'],
+    packages=find_packages(where="src"),
     install_requires=['requests']
 )
