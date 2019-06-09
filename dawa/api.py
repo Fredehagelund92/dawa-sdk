@@ -2,8 +2,8 @@ import requests
 import json
 from urllib.parse import urlencode
 
-from dawa.exceptions import DawaException, EndpointException
-from dawa.enums import DawaEnum
+from .exceptions import DawaException, EndpointException
+from .enums import DawaEnum
 
 ITER_CHUNK_SIZE = 1024
 BASE_URL = "https://dawa.aws.dk"
@@ -34,7 +34,7 @@ class API:
         params['entitet'] = endpoint
 
         # Set txid if in kwargs
-        if 'txid' in kwargs:
+        if 'txid' in kwargs and kwargs['txid'] is not None:
             params['txid'] = kwargs['txid']
 
         # If no txid then do initial replication

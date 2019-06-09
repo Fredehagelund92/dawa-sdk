@@ -8,7 +8,7 @@ except IOError:
 
 setup(
     name='dawa-sdk',
-    version='0.1.0',
+    version='0.0.2',
     description='Python Dawa API',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -26,6 +26,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules'
     ],
     keywords=['dawa', 'api', 'python'],
-    packages=find_packages(where="src"),
-    install_requires=['requests']
+    packages=find_packages(exclude=('tests')),
+    install_requires=['requests'],
+    tests_require=['pytest'],
 )

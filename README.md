@@ -6,7 +6,7 @@
 
 ## Installation
 ```
-pip install dawa
+pip install dawa-sdk
 ```
 
 ## Using
