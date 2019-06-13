@@ -1,3 +1,4 @@
 {
-  "tests/test_txid.py::test_answer": true
+  "tests/test_txid.py::test_answer": true,
+  "tests/test_vejstykker.py::test_vejstykker_changes": true
 }

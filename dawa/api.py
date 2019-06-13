@@ -1,5 +1,7 @@
 import requests
 import json
+import tempfile
+import csv
 
 from .exceptions import DawaException, EndpointException
 from .enums import DawaEnum
@@ -7,6 +9,12 @@ from .enums import DawaEnum
 ITER_CHUNK_SIZE = 1024
 BASE_URL = "https://dawa.aws.dk"
 
+def is_json(myjson):
+    try:
+        json_object = json.loads(myjson)
+    except ValueError as e:
+        return False
+    return True
 
 class API:
 
@@ -28,21 +36,33 @@ class API:
         if not DawaEnum.has_value(endpoint):
             raise EndpointException('The following endpoint does not exists: %s' % endpoint)
 
+
+
         # Create request params
         params = {}
-        params['entitet'] = endpoint
+        params['entitet'] = endpoint.lower()
+        params['format'] = 'csv'
 
-        # Set txid if in kwargs
-        if 'txid' in kwargs and kwargs['txid'] is not None:
-            params['txid'] = kwargs['txid']
+        # You cannot have only one of the parameters txidtil and txidfra
+        if 'txidtil' in kwargs and 'txidfra' not in kwargs:
+            raise EndpointException('You cannot have parameter txidtil without txidfra')
+
+        if 'txidfra' in kwargs and 'txidtil' not in kwargs:
+            raise EndpointException('You cannot have parameter txidfra without txidtil')
+
+
+        # Set txid if in kwargs and it is not None
+        if 'txidtil' in kwargs and 'txidfra' in kwargs:
+            if kwargs['txidtil'] is not None and kwargs['txidfra'] is not None:
+                params['txidtil'] = kwargs['txidtil']
+                params['txidfra'] = kwargs['txidfra']
 
         # If no txid then do initial replication
-        if not 'txid' in params:
-            # params['format'] = 'csv'
+        if 'txidtil' not in params and 'txidfra' not in params:
             return self.response(self._get_initial(params))
 
         # if txid is equal to current txid return nothing
-        if params['txid'] == self._get_current_txid():
+        if params['txidfra'] == self._get_current_txid():
             return
 
         # Retrieve latest updates
@@ -63,18 +83,47 @@ class API:
 
     @staticmethod
     def _get(url, params=None, **kwargs):
-        result = requests.get(url, params=params, **kwargs)
-        _response = result.json()
+        headers = dict()
+        headers['Content-Type'] = 'text/csv'
 
-        if _response and 'error' in _response:
-            raise DawaException(_response['error']['code'], _response['error']['message'], result)
+        with tempfile.NamedTemporaryFile(mode="w+", encoding="utf8") as csv_file:
+            resp = requests.get(url, params=params, headers=headers, stream=True)
+            for chunk in resp.iter_content(chunk_size=ITER_CHUNK_SIZE, decode_unicode=True):
+                if chunk:
+                    # Replace any NULL bytes in the chunk so it can be safely given to the CSV reader
+                    csv_file.write(chunk.replace('\0', ''))
 
-        if result.status_code != 200:
-            raise DawaException(result.status_code, result.reason, result)
+            csv_file.seek(0)
+            csv_reader = csv.reader(
+                csv_file,
+                delimiter=',',
+                quotechar='"'
+            )
+            # Get header values
+            column_name_list = next(csv_reader)
 
-        return result
+
+            endpoint = params['entitet']
+            endpoint_class = DawaEnum.get_model(endpoint)
+
+
+
+            for line in csv_reader:
+                rec = dict(zip(column_name_list, line))
+
+                row = {}
+                for field, value in rec.items():
+                    try:
+                        row[field] = endpoint_class._field_types[field](value)
+                    except ValueError as e:
+                        row[field] = None
+
+
+                vals = row
+                yield vals
+
 
 
     @staticmethod
     def response(response):
-        return response.json()
+        return response
