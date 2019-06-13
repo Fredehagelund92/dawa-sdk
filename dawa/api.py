@@ -1,5 +1,4 @@
 import requests
-import json
 import tempfile
 import csv
 
@@ -9,18 +8,14 @@ from .enums import DawaEnum
 ITER_CHUNK_SIZE = 1024
 BASE_URL = "https://dawa.aws.dk"
 
-def is_json(myjson):
-    try:
-        json_object = json.loads(myjson)
-    except ValueError as e:
-        return False
-    return True
 
 class API:
+    def __init__(self):
+        pass
 
     def _get_current_txid(self):
         url = '%s/replikering/senestetransaktion' % BASE_URL
-        data = self._get(url).json()
+        data = requests.get(url).json()
 
         if 'txid' in data:
             return data['txid']
@@ -114,15 +109,18 @@ class API:
                 row = {}
                 for field, value in rec.items():
                     try:
-                        row[field] = endpoint_class._field_types[field](value)
-                    except ValueError as e:
-                        row[field] = None
+                        new_value = endpoint_class._field_types[field](value)
 
+                        # Convert empty strings to handle datetime
+                        if not new_value:
+                            row[field] = None
+                        else:
+                            row[field] = new_value
+                    except ValueError:
+                        row[field] = None
 
                 vals = row
                 yield vals
-
-
 
     @staticmethod
     def response(response):

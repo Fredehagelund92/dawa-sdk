@@ -1,5 +1,8 @@
 import ast
 import typing
+import datetime
+
+
 
 class Postnummer(typing.NamedTuple):
     nr: str
@@ -15,6 +18,7 @@ class Vejstykke(typing.NamedTuple):
     navn: str
     adresseringsnavn: str
     navngivenvej_id: str
+
 
 class Adresse(typing.NamedTuple):
     id: str
@@ -144,7 +148,7 @@ class Højde(typing.NamedTuple):
 
 
 class Ikke_brofast_husnummer(typing.NamedTuple):
-    husnummerid: int
+    husnummerid: str
 
 class Jordstykke(typing.NamedTuple):
     ejerlavkode: int
