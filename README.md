@@ -1,4 +1,4 @@
-# dawa-python
+# dawa-sdk
 ===================
 #### Python - Dawa API
 
