@@ -6,14 +6,18 @@ def test_vejstykker_initial():
 
     api = API()
 
-    vejstykker = api.get('vejstykke', txid=None)
+    vejstykker = api.replicate('vejstykke')
 
-    assert len(vejstykker) > 0
+    for obj in vejstykker:
+        assert 'id' in obj
+        break
 
 def test_vejstykker_changes():
 
     api = API()
 
-    vejstykker = api.get('vejstykke', txidfra=3432423, txidtil=3432423)
+    vejstykker = api.replicate('vejstykke', txidfra=3432423, txidtil=3432423)
 
-    assert len(vejstykker) >= 0
+    for obj in vejstykker:
+        assert 'id' in obj
+        break

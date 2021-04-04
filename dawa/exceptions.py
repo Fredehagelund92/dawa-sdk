@@ -15,3 +15,6 @@ class DawaException(Exception):
 
 class EndpointException(Exception):
     pass
+
+class ValidationError(Exception):
+    pass

@@ -3,6 +3,12 @@ from enum import Enum
 
 from .endpoints import *
 
+
+class ReplicationMethod(Enum):
+    full = 'FULL'
+    interval = 'INTERVAL'
+    single = 'SINGLE'
+
 class DawaEnum(Enum):
     vejstykke = 'vejstykke'
     postnummer = 'postnummer'
@@ -50,7 +56,6 @@ class DawaEnum(Enum):
     vejstykkepostnummerrelation = 'vejstykkepostnummerrelation'
     zone = 'zone'
     zonetilknytning = 'zonetilknytning'
-
 
     @classmethod
     def has_value(cls, value):

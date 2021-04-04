@@ -3,11 +3,11 @@ import typing
 import datetime
 
 
-
 class Postnummer(typing.NamedTuple):
     nr: str
     navn: str
     stormodtager: str
+
 
 class Vejstykke(typing.NamedTuple):
     id: str
@@ -32,6 +32,7 @@ class Adresse(typing.NamedTuple):
     kilde: int
     esdhreference: str
     journalnummer: str
+
 
 class Adgangsadresse(typing.NamedTuple):
     id: str
@@ -63,6 +64,7 @@ class Adgangsadresse(typing.NamedTuple):
     vejpunkt_id: str
     navngivenvej_id: str
 
+
 class Navngivenvej(typing.NamedTuple):
     id: str
     darstatus: str
@@ -79,6 +81,7 @@ class Navngivenvej(typing.NamedTuple):
     beliggenhed_oprindelse_registrering: str
     beliggenhed_oprindelse_tekniskstandard: str
 
+
 class Afstemningsområde(typing.NamedTuple):
     ændret: str
     geo_ændret: str
@@ -93,6 +96,7 @@ class Afstemningsområde(typing.NamedTuple):
     afstemningsstedadresse: str
     kommunekode: str
     opstillingskreds_dagi_id: str
+
 
 class Afstemningsområdetilknytning(typing.NamedTuple):
     adgangsadresseid: str
@@ -132,6 +136,7 @@ class Dagi_postnummer(typing.NamedTuple):
     nr: str
     navn: str
 
+
 class Ejerlav(typing.NamedTuple):
     kode: int
     navn: str
@@ -142,6 +147,7 @@ class Ejerlav(typing.NamedTuple):
     bbox:  ast.literal_eval
     geometri: ast.literal_eval
 
+
 class Højde(typing.NamedTuple):
     husnummerid: str
     højde: float
@@ -149,6 +155,7 @@ class Højde(typing.NamedTuple):
 
 class Ikke_brofast_husnummer(typing.NamedTuple):
     husnummerid: str
+
 
 class Jordstykke(typing.NamedTuple):
     ejerlavkode: int
@@ -178,6 +185,7 @@ class Jordstykketilknytning(typing.NamedTuple):
     matrikelnr: str
     adgangsadresseid: str
 
+
 class Kommune(typing.NamedTuple):
     ændret: str
     geo_ændret: str
@@ -191,9 +199,11 @@ class Kommune(typing.NamedTuple):
     regionskode: str
     udenforkommuneinddeling: bool
 
+
 class Kommunetilknytning(typing.NamedTuple):
     adgangsadresseid: str
     kommunekode: str
+
 
 class Landpostnummer(typing.NamedTuple):
     ændret: str
@@ -204,6 +214,7 @@ class Landpostnummer(typing.NamedTuple):
     geometri: ast.literal_eval
     nr: str
     navn: str
+
 
 class Menighedsrådsafstemningsområde(typing.NamedTuple):
     ændret: str
@@ -219,10 +230,12 @@ class Menighedsrådsafstemningsområde(typing.NamedTuple):
     kommunekode: str
     sognekode: str
 
+
 class Menighedsrådsafstemningsområdetilknytning(typing.NamedTuple):
     adgangsadresseid: str
     kommunekode: str
     menighedsrådsafstemningsområdenummer: str
+
 
 class Opstillingskreds(typing.NamedTuple):
     ændret: str
@@ -239,9 +252,11 @@ class Opstillingskreds(typing.NamedTuple):
     storkredsnummer: str
     kredskommunekode: str
 
+
 class Opstillingskredstilknytning(typing.NamedTuple):
     adgangsadresseid: str
     opstillingskredskode: str
+
 
 class Politikreds(typing.NamedTuple):
     ændret: str
@@ -254,13 +269,16 @@ class Politikreds(typing.NamedTuple):
     kode: str
     navn: str
 
+
 class Politikredstilknytning(typing.NamedTuple):
     adgangsadresseid: str
     politikredskode: str
 
+
 class Postnummertilknytning(typing.NamedTuple):
     adgangsadresseid: str
     postnummer: str
+
 
 class Region(typing.NamedTuple):
     ændret: str
@@ -273,9 +291,11 @@ class Region(typing.NamedTuple):
     kode: str
     navn: str
 
+
 class Regionstilknytning(typing.NamedTuple):
     adgangsadresseid: str
     regionskode: str
+
 
 class Retskreds(typing.NamedTuple):
     ændret: str
@@ -288,9 +308,11 @@ class Retskreds(typing.NamedTuple):
     kode: str
     navn: str
 
+
 class Retskredstilknytning(typing.NamedTuple):
     adgangsadresseid: str
     retskredskode: str
+
 
 class Sogn(typing.NamedTuple):
     ændret: str
@@ -303,9 +325,11 @@ class Sogn(typing.NamedTuple):
     kode: str
     navn: str
 
+
 class Sognetilknytning(typing.NamedTuple):
     adgangsadresseid: str
     sognekode: str
+
 
 class Sted(typing.NamedTuple):
     id: str
@@ -317,19 +341,23 @@ class Sted(typing.NamedTuple):
     bbox: ast.literal_eval
     geometri: ast.literal_eval
 
+
 class Stednavn(typing.NamedTuple):
     stedid: str
     navn: str
     navnestatus: str
     brugsprioritet: str
 
+
 class Stednavntilknytning(typing.NamedTuple):
     stednavn_id: str
     adgangsadresse_id: str
 
+
 class Stedtilknytning(typing.NamedTuple):
     stedid: str
     adgangsadresseid: str
+
 
 class Storkreds(typing.NamedTuple):
     ændret: str
@@ -343,9 +371,11 @@ class Storkreds(typing.NamedTuple):
     regionskode: str
     valglandsdelsbogstav: str
 
+
 class Storkredstilknytning(typing.NamedTuple):
     adgangsadresseid: str
     storkredsnummer: str
+
 
 class Supplerendebynavn(typing.NamedTuple):
     ændret: str
@@ -358,9 +388,11 @@ class Supplerendebynavn(typing.NamedTuple):
     navn: str
     kommunekode: str
 
+
 class Supplerendebynavntilknytning(typing.NamedTuple):
     adgangsadresseid: str
     dagi_id: str
+
 
 class Valglandsdel(typing.NamedTuple):
     ændret: str
@@ -372,14 +404,17 @@ class Valglandsdel(typing.NamedTuple):
     bogstav: str
     navn: str
 
+
 class Valglandsdelstilknytning(typing.NamedTuple):
     adgangsadresseid: str
     valglandsdelsbogstav: str
+
 
 class Vejmidte(typing.NamedTuple):
     kommunekode: str
     vejkode: str
     geometri: ast.literal_eval
+
 
 class Vejpunkt(typing.NamedTuple):
     id: str
@@ -388,10 +423,12 @@ class Vejpunkt(typing.NamedTuple):
     nøjagtighedsklasse: str
     position: ast.literal_eval
 
+
 class Vejstykkepostnummerrelation(typing.NamedTuple):
     kommunekode: str
     vejkode: str
     postnr: str
+
 
 class Zone(typing.NamedTuple):
     ændret: str
@@ -401,6 +438,7 @@ class Zone(typing.NamedTuple):
     bbox: ast.literal_eval
     geometri: ast.literal_eval
     zone: str
+
 
 class Zonetilknytning(typing.NamedTuple):
     adgangsadresseid: str

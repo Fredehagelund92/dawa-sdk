@@ -12,7 +12,7 @@ setup(
     description='Python Dawa API',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/Fredehagelund92/dawa-python',
+    url='https://github.com/Fredehagelund92/dawa-sdk',
     author='Frederik Hagelund',
     author_email='frederik.hagelund@gmail.com',
     license='GPL',
@@ -26,6 +26,6 @@ setup(
     ],
     keywords=['dawa', 'api', 'python'],
     packages=find_packages(exclude=('tests')),
-    install_requires=['requests'],
+    install_requires=['requests==2.25.1'],
     tests_require=['pytest'],
 )
