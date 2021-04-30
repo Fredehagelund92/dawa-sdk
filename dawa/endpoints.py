@@ -430,7 +430,7 @@ class Sted(typing.NamedTuple):
     id: str
     hovedtype: str
     undertype: str
-    bebyggelseskode: int
+    bebyggelseskode: str
     indbyggerantal: int
     visueltcenter: ast.literal_eval
     bbox: ast.literal_eval

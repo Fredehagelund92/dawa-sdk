@@ -1,23 +1,24 @@
+
 import pytest
 
 from dawa import API
 
-def test_vejstykker_initial():
+def test_vejstykke_initial():
 
     api = API()
 
-    vejstykker = api.replicate('vejstykke')
+    vejstykke = api.replicate('vejstykke')
 
-    for obj in vejstykker:
-        assert 'id' in obj
+    for obj in vejstykke:
+        assert len(obj) != 0
         break
 
-def test_vejstykker_changes():
+def test_vejstykke_changes():
 
     api = API()
 
-    vejstykker = api.replicate('vejstykke', txidfra=3432423, txidtil=3432423)
+    vejstykke = api.replicate('vejstykke', txidfra=3432423, txidtil=3432423)
 
-    for obj in vejstykker:
-        assert 'id' in obj
+    for obj in vejstykke:
+        assert len(obj) != 0
         break

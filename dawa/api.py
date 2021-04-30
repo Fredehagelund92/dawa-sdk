@@ -115,20 +115,25 @@ class API:
                 for field, value in rec.items():
 
                     try:
-                        new_value = endpoint_class._field_types[field](value)
+                        # Set value initial to None to handle literal_eval type
+                        new_value = None
 
-                        # Convert empty strings to handle datetime
-                        if not new_value:
-                            row[field] = None
-                        else:
-                            row[field] = new_value
-                    except (ValueError, KeyError):
+                        # If value not empty then proceed
+                        if value:
+                            new_value = endpoint_class._field_types[field](value)
+
+                            # Convert empty strings to handle datetime
+                            if not new_value:
+                                row[field] = None
+                            else:
+                                row[field] = new_value
+                    except (ValueError, KeyError) as e:
                         row.pop(field, None)
 
 
                 vals = row
 
-                yield vals
+                yield rec
 
     @staticmethod
     def response(response):
