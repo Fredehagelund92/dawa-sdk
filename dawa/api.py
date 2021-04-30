@@ -19,8 +19,11 @@ class API:
 
     def replicate(self, endpoint, **kwargs):
 
+        endpoint_lower = endpoint.lower()
+
+
         # Check if endpoint exists
-        if not DawaEnum.has_value(endpoint):
+        if not DawaEnum.has_value(endpoint_lower):
             raise EndpointException('The following endpoint does not exists or is not supported: %s' % endpoint)
 
         # Validate replication params
@@ -38,7 +41,7 @@ class API:
 
         # Create default request params
         params = {}
-        params['entitet'] = endpoint.lower()
+        params['entitet'] = endpoint_lower
         params['format'] = 'csv'
 
         # Set params for single replication
@@ -103,11 +106,14 @@ class API:
             endpoint = params['entitet']
             endpoint_class = DawaEnum.get_model(endpoint)
 
+
+
             for line in csv_reader:
                 rec = dict(zip(column_name_list, line))
 
                 row = {}
                 for field, value in rec.items():
+
                     try:
                         new_value = endpoint_class._field_types[field](value)
 
@@ -116,10 +122,12 @@ class API:
                             row[field] = None
                         else:
                             row[field] = new_value
-                    except ValueError:
-                        row[field] = None
+                    except (ValueError, KeyError):
+                        row.pop(field, None)
+
 
                 vals = row
+
                 yield vals
 
     @staticmethod

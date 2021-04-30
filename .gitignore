@@ -100,3 +100,8 @@ ENV/
 
 
 .vscode
+
+
+# extra
+.idea
+.pytest_cache

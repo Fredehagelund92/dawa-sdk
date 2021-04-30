@@ -1,4 +1,6 @@
 {
+  "tests/test_postnummer.py::test_postnummer_changes": true,
+  "tests/test_postnummer.py::test_postnummer_initial": true,
   "tests/test_txid.py::test_answer": true,
   "tests/test_vejstykker.py::test_vejstykker_changes": true
 }

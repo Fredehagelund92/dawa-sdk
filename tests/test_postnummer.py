@@ -10,6 +10,7 @@ def test_postnummer_initial():
     postnummer = api.replicate('postnummer')
 
     for obj in postnummer:
+
         assert 'nr' in obj
         break
 
@@ -19,7 +20,7 @@ def test_postnummer_changes():
 
     api = API()
 
-    postnummer = api.replicate('postnummer', txidfra=3432423, txidtil=3432423)
+    postnummer = api.replicate('postnummer', txidfra=0, txidtil=3786429)
 
     for obj in postnummer:
         assert 'nr' in obj
