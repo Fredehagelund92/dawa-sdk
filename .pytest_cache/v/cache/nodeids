@@ -1,9 +1,0 @@
-[
-  "tests/test_kommune.py::test_kommune_changes",
-  "tests/test_kommune.py::test_kommune_initial",
-  "tests/test_postnummer.py::test_postnummer_changes",
-  "tests/test_postnummer.py::test_postnummer_initial",
-  "tests/test_txid.py::test_txid",
-  "tests/test_vejstykke.py::test_vejstykker_changes",
-  "tests/test_vejstykke.py::test_vejstykker_initial"
-]
