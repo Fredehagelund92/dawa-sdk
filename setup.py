@@ -8,7 +8,7 @@ except IOError:
 
 setup(
     name='dawa-sdk',
-    version='0.0.42',
+    version='0.1.0',
     description='Python Dawa API',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -20,7 +20,7 @@ setup(
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
         "Operating System :: OS Independent",
         'Topic :: Software Development :: Libraries :: Python Modules'
     ],

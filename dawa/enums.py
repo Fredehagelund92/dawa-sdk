@@ -59,10 +59,6 @@ class DawaEnum(Enum):
 
     @classmethod
     def has_value(cls, value):
-        for item in cls:
-            print(item.value)
-
-        print(value)
         return any(value == item.value for item in cls)
 
     @classmethod
