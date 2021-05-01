@@ -6,7 +6,7 @@ import datetime
 class Postnummer(typing.NamedTuple):
     nr: str
     navn: str
-    stormodtager: str
+    stormodtager: bool
     txid: str
     tidspunkt: str
     operation: str

@@ -113,7 +113,6 @@ class API:
 
                 row = {}
                 for field, value in rec.items():
-
                     try:
                         # Set value initial to None to handle literal_eval type
                         new_value = None
@@ -129,7 +128,6 @@ class API:
                                 row[field] = new_value
                     except (ValueError, KeyError) as e:
                         row.pop(field, None)
-
 
                 vals = row
 
