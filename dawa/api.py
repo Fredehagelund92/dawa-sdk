@@ -131,7 +131,7 @@ class API:
 
                 vals = row
 
-                yield rec
+                yield vals
 
     @staticmethod
     def response(response):

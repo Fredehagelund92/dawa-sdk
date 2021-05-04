@@ -56,6 +56,7 @@ class DawaEnum(Enum):
     vejstykkepostnummerrelation = 'vejstykkepostnummerrelation'
     zone = 'zone'
     zonetilknytning = 'zonetilknytning'
+    postnummertilknytning = 'postnummertilknytning'
 
     @classmethod
     def has_value(cls, value):
