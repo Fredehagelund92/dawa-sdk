@@ -26,6 +26,6 @@ setup(
     ],
     keywords=['dawa', 'api', 'python'],
     packages=find_packages(exclude=('tests')),
-    install_requires=['requests==2.25.1'],
+    install_requires=['requests==2.31.0'],
     tests_require=['pytest==6.2.1'],
 )
